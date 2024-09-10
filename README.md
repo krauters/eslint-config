@@ -133,7 +133,6 @@ npm unlink @krauters/eslint-config
 
 - [TypeScript ESLint Playground](https://typescript-eslint.io/play)
 
-
 ## Contributing
 
 The goal of this project is to continually evolve and improve its core features, making it more efficient and easier to use. Development happens openly here on GitHub, and we’re thankful to the community for contributing bug fixes, enhancements, and fresh ideas. Whether you're fixing a small bug or suggesting a major improvement, your input is invaluable.
@@ -149,3 +148,7 @@ Thanks for spending time on this project.
 <a href="https://github.com/krauters/eslint-config/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=krauters/eslint-config" />
 </a>
+
+<br />
+<br />
+<a href="https://www.buymeacoffee.com/coltenkrauter"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=coltenkrauter&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
