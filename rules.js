@@ -174,7 +174,7 @@ export const tsEslint = {
 	'@typescript-eslint/unbound-method': off,
 	'dot-notation': off,
 	'eol-last': [error, always],
-	'filenames/match-exported': [error, kebabCase],
+	'filenames/match-exported': [error, kebabCase, { exclude: ['index.ts', 'index.tsx', 'index.js', 'index.jsx'] }],
 	'filenames/match-regex': [error, /^[a-z-.]*$/],
 	'import/first': error,
 	'import/named': error,
