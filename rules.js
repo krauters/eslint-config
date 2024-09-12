@@ -207,7 +207,6 @@ export const tsEslint = {
 }
 
 export const rules = {
-	...jsDoc,
 	...prettier,
 	...stylisticTs,
 	...tsEslint,

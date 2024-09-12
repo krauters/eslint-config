@@ -58,10 +58,28 @@ npm install @krauters/eslint-config typescript-eslint --save-dev
 
 1. Add a config file `eslint.config.js` to the root of your project with the following contents,
 
+### ESM
+
 ```javascript
 import eslintConfig from '@krauters/eslint-config'
 
 export default eslintConfig
+```
+
+### CommonJS
+
+```javascript
+let eslintConfig
+
+function getConfig() {
+	if (!eslintConfig) {
+		eslintConfig = import('@krauters/eslint-config').then((mod) => mod.default)
+	}
+
+	return eslintConfig
+}
+
+module.exports = getConfig()
 ```
 
 1. Add these npm scripts to your [package.json](./package.json),
