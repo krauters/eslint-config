@@ -1,6 +1,6 @@
 {
   "name": "@krauters/eslint-config",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "TypeScript linting configuration.",
   "author": "Colten Krauter <coltenkrauter>",
   "main": "eslint.config.js",
