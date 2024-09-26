@@ -1,16 +1,18 @@
-import eslint from '@eslint/js'
-import pluginStylisticTs from '@stylistic/eslint-plugin-ts'
-import parserTs from '@typescript-eslint/parser'
-import filenames from 'eslint-plugin-filenames'
-import pluginImport from 'eslint-plugin-import'
-import jsdoc from 'eslint-plugin-jsdoc'
-import perfectionist from 'eslint-plugin-perfectionist'
-import prettier from 'eslint-plugin-prettier'
-import tsEslint from 'typescript-eslint'
+/* eslint-disable @typescript-eslint/naming-convention */
 
-import { rules } from './rules.js'
+const eslint = require('@eslint/js')
+const pluginStylisticTs = require('@stylistic/eslint-plugin-ts')
+const parserTs = require('@typescript-eslint/parser')
+const filenames = require('eslint-plugin-filenames')
+const pluginImport = require('eslint-plugin-import')
+const jsdoc = require('eslint-plugin-jsdoc')
+const perfectionist = require('eslint-plugin-perfectionist')
+const prettier = require('eslint-plugin-prettier')
+const tsEslint = require('typescript-eslint')
 
-export default tsEslint.config(
+const { rules } = require('./rules.js')
+
+module.exports = tsEslint.config(
 	eslint.configs.recommended,
 	...tsEslint.configs.recommendedTypeChecked,
 	...tsEslint.configs.stylisticTypeChecked,
@@ -22,13 +24,17 @@ export default tsEslint.config(
 	},
 	{
 		languageOptions: {
+			globals: {
+				module: 'readonly',
+				require: 'readonly',
+			},
 			parserOptions: {
 				parser: parserTs,
 				project: true,
+				sourceType: 'script',
 			},
 		},
 		plugins: {
-			// eslint-disable-next-line @typescript-eslint/naming-convention
 			'@stylistic/ts': pluginStylisticTs,
 			filenames,
 			import: pluginImport,
@@ -37,7 +43,6 @@ export default tsEslint.config(
 		},
 		rules,
 		settings: {
-			// eslint-disable-next-line @typescript-eslint/naming-convention
 			'import/resolver': {
 				typescript: {},
 			},
