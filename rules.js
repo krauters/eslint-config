@@ -27,7 +27,7 @@ const newlineCount = 1
  * JSDoc rules.
  * https://github.com/gajus/eslint-plugin-jsdoc/tree/main/docs/rules
  */
-export const jsDoc = {
+const jsDoc = {
 	'jsdoc/require-description-complete-sentence': error,
 	'jsdoc/require-hyphen-before-param-description': error,
 	'jsdoc/require-jsdoc': [
@@ -46,9 +46,9 @@ export const jsDoc = {
 	'jsdoc/require-param': error,
 	'jsdoc/require-param-description': error,
 	'jsdoc/require-param-name': error,
-	'jsdoc/require-property': error,
-	'jsdoc/require-property-description': error,
-	'jsdoc/require-property-name': error,
+	'jsdoc/require-property': off,
+	'jsdoc/require-property-description': off,
+	'jsdoc/require-property-name': off,
 	'jsdoc/require-returns': error,
 	'jsdoc/require-yields': error,
 }
@@ -57,7 +57,7 @@ export const jsDoc = {
  * Prettier handles formatting, especially things like max line length.
  * https://prettier.io/docs/en/options.html
  */
-export const prettier = {
+const prettier = {
 	'@stylistic/ts/indent': off,
 	'@stylistic/ts/quotes': off,
 	'@stylistic/ts/space-before-function-paren': off,
@@ -84,7 +84,7 @@ export const prettier = {
  * Autofixable "@stylistic/ts/" rules
  * For more details, check: https://eslint.style/packages/ts
  */
-export const stylisticTs = {
+const stylisticTs = {
 	'@stylistic/ts/block-spacing': [error, always],
 	'@stylistic/ts/brace-style': [error, '1tbs'],
 	'@stylistic/ts/comma-dangle': [error, 'always-multiline'],
@@ -146,7 +146,7 @@ export const stylisticTs = {
  * TypeScript-specific ESLint rules
  * https://typescript-eslint.io/rules/
  */
-export const tsEslint = {
+const tsEslint = {
 	'@typescript-eslint/array-type': error,
 	'@typescript-eslint/consistent-indexed-object-style': error,
 	'@typescript-eslint/consistent-type-assertions': error,
@@ -163,7 +163,6 @@ export const tsEslint = {
 		{ format: [pascalCase], selector: 'enumMember' },
 	],
 	'@typescript-eslint/no-extraneous-class': off,
-	'@typescript-eslint/no-require-imports': error,
 	'@typescript-eslint/no-restricted-imports': error,
 	'@typescript-eslint/no-restricted-types': error,
 	'@typescript-eslint/no-unnecessary-condition': off,
@@ -180,10 +179,7 @@ export const tsEslint = {
 	'import/named': error,
 	'import/newline-after-import': [error, { count: newlineCount }],
 	'import/no-absolute-path': error,
-	'import/no-amd': error,
-	'import/no-commonjs': error,
 	'import/no-cycle': error,
-	'import/no-default-export': error,
 	'import/no-duplicates': error,
 	'import/no-empty-named-blocks': error,
 	'import/no-namespace': error,
@@ -206,8 +202,28 @@ export const tsEslint = {
 	'spaced-comment': [error, always, { block: { balanced: true } }],
 }
 
-export const rules = {
+/*
+ * Rules to allow CommonJS
+ */
+const commonjsPreventRules = {
+	'@typescript-eslint/no-require-imports': off,
+	'import/no-amd': off,
+	'import/no-commonjs': off,
+	'import/no-default-export': off,
+}
+
+const rules = {
+	...commonjsPreventRules,
 	...prettier,
 	...stylisticTs,
 	...tsEslint,
+}
+
+module.exports = {
+	commonjsPreventRules,
+	jsDoc,
+	prettier,
+	rules,
+	stylisticTs,
+	tsEslint,
 }
