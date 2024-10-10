@@ -30,7 +30,7 @@ module.exports = tsEslint.config(
 			},
 			parserOptions: {
 				parser: parserTs,
-				project: true,
+				project: './tsconfig.eslint.json',
 				sourceType: 'script',
 			},
 		},
