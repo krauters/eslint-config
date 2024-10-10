@@ -9,14 +9,26 @@
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"skipLibCheck": true,
-		"noEmit": true,
+		"declaration": true,
+		"declarationMap": true,
 		"verbatimModuleSyntax": true,
-		"allowJs": true
+		"allowJs": true,
+		"rootDir": "./",
+		"strictNullChecks": true,
+		"removeComments": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true
 	},
 	"include": [
 		"**/*.ts",
-		"**/*.js",
-		"examples/*.ts"
+		"**/*.js"
 	],
-	"exclude": ["node_modules", ".vscode"]
+	"exclude": [
+		"node_modules",
+		".vscode",
+		"dist",
+		"examples"
+	]
 }
