@@ -8,9 +8,15 @@ const pluginImport = require('eslint-plugin-import')
 const jsdoc = require('eslint-plugin-jsdoc')
 const perfectionist = require('eslint-plugin-perfectionist')
 const prettier = require('eslint-plugin-prettier')
+const { existsSync } = require('fs')
+const { join } = require('path')
 const tsEslint = require('typescript-eslint')
 
 const { rules } = require('./rules.js')
+
+// eslint-disable-next-line no-undef
+const tsconfigPath = join(__dirname, 'tsconfig.eslint.json')
+const project = existsSync(tsconfigPath) ? tsconfigPath : './tsconfig.json'
 
 module.exports = tsEslint.config(
 	eslint.configs.recommended,
@@ -30,7 +36,7 @@ module.exports = tsEslint.config(
 			},
 			parserOptions: {
 				parser: parserTs,
-				project: true,
+				project,
 				sourceType: 'script',
 			},
 		},

@@ -53,7 +53,7 @@ npm run fix
 1. Install the necessary dependencies:
 
 ```zsh
-npm install @krauters/eslint-config typescript-eslint --save-dev
+npm install @krauters/eslint-config --save-dev
 ```
 
 1. Add a config file `eslint.config.js` to the root of your project with the following contents,
