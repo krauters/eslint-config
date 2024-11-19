@@ -180,7 +180,6 @@ const tsEslint = {
 	'import/no-cycle': error,
 	'import/no-duplicates': error,
 	'import/no-empty-named-blocks': error,
-	'import/no-namespace': error,
 	'import/no-relative-packages': error,
 	'import/no-self-import': error,
 	'import/no-unresolved': error,
