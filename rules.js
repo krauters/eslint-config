@@ -9,7 +9,7 @@ const { all, always, error, never, none, off } = {
 	off: 'off',
 }
 
-const { camelCase, kebabCase, pascalCase } = {
+const { camelCase, pascalCase } = {
 	camelCase: 'camelCase',
 	kebabCase: 'kebab',
 	pascalCase: 'PascalCase',
@@ -173,8 +173,6 @@ const tsEslint = {
 	'@typescript-eslint/unbound-method': off,
 	'dot-notation': off,
 	'eol-last': [error, always],
-	'filenames/match-exported': [error, kebabCase, { exclude: ['index.ts', 'index.tsx', 'index.js', 'index.jsx'] }],
-	'filenames/match-regex': [error, /^[a-z-.]*$/],
 	'import/first': error,
 	'import/named': error,
 	'import/newline-after-import': [error, { count: newlineCount }],
