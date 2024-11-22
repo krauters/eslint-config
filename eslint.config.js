@@ -18,6 +18,9 @@ const { rules } = require('./rules.js')
 const tsconfigPath = join(__dirname, 'tsconfig.eslint.json')
 const project = existsSync(tsconfigPath) ? tsconfigPath : './tsconfig.json'
 
+// eslint-disable-next-line no-undef
+console.log('[Eslint]', project)
+
 module.exports = tsEslint.config(
 	eslint.configs.recommended,
 	...tsEslint.configs.recommendedTypeChecked,
@@ -34,10 +37,12 @@ module.exports = tsEslint.config(
 				module: 'readonly',
 				require: 'readonly',
 			},
+			parser: parserTs,
 			parserOptions: {
-				parser: parserTs,
 				project,
-				sourceType: 'script',
+				sourceType: 'unambiguous',
+				// eslint-disable-next-line no-undef
+				tsconfigRootDir: __dirname,
 			},
 		},
 		plugins: {
