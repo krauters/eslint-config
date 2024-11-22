@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/naming-convention */
 
 const eslint = require('@eslint/js')
@@ -9,16 +8,10 @@ const jsdoc = require('eslint-plugin-jsdoc')
 const perfectionist = require('eslint-plugin-perfectionist')
 const prettier = require('eslint-plugin-prettier')
 const projectStructure = require('eslint-plugin-project-structure')
-const { existsSync } = require('fs')
-const { join } = require('path')
 const tsEslint = require('typescript-eslint')
 
 const { rules } = require('./rules.js')
-
-const tsconfigPath = join(process.cwd(), 'tsconfig.eslint.json')
-const project = existsSync(tsconfigPath) ? tsconfigPath : join(process.cwd(), 'tsconfig.json')
-
-console.log('[Eslint]', project)
+const { getTsConfigFile } = require('./utils.js')
 
 module.exports = tsEslint.config(
 	eslint.configs.recommended,
@@ -38,7 +31,7 @@ module.exports = tsEslint.config(
 			},
 			parser: parserTs,
 			parserOptions: {
-				project,
+				project: getTsConfigFile(),
 				sourceType: 'unambiguous',
 			},
 		},

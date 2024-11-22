@@ -143,6 +143,27 @@ npm link @krauters/eslint-config
 npm unlink @krauters/eslint-config
 ```
 
+### Setting Up Environment Variables
+
+To control the behavior of how this package gets it's tsconfig file, you can set the following environment variables:
+
+- `ESLINT_DEBUG`: Enables detailed debug logging. Set this to any truthy value, e.g., `1` or `true`.
+- `ESLINT_TSCONFIG`: Overrides the default target file being searched. Defaults to `tsconfig.eslint.json`.
+- `ESLINT_START_DIR`: Specifies the starting directory for the search. Defaults to the current working directory (`process.cwd()`).
+- `ESLINT_TSCONFIG_FALLBACK`: Sets a fallback file to use if the target file is not found. Defaults to `tsconfig.json`.
+
+### Debugging Tips
+
+To troubleshoot your ESLint configuration, use the following commands:
+
+```zsh
+# Print the full ESLint config for a specific file that you want to lint
+npx eslint --print-config test/auth-service.test.ts | grep tsconfig
+
+# Enable debug logging while running ESLint
+ESLINT_DEBUG=true npx eslint .
+```
+
 ## Resources
 
 - [TypeScript ESLint Playground](https://typescript-eslint.io/play)
@@ -165,4 +186,4 @@ Thanks for spending time on this project.
 
 <br />
 <br />
-<a href="https://www.buymeacoffee.com/coltenkrauter"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=coltenkrauter&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
+<a href="https://www.buymeacoffee.com/coltenkrauter"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=coltenkrauter&button_colour=FFDD00&font_colour=```&font_family=Cookie&outline_colour=```&coffee_colour=ffffff" /></a>
