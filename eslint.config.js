@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/naming-convention */
 
 const eslint = require('@eslint/js')
@@ -14,11 +15,9 @@ const tsEslint = require('typescript-eslint')
 
 const { rules } = require('./rules.js')
 
-// eslint-disable-next-line no-undef
-const tsconfigPath = join(__dirname, 'tsconfig.eslint.json')
-const project = existsSync(tsconfigPath) ? tsconfigPath : './tsconfig.json'
+const tsconfigPath = join(process.cwd(), 'tsconfig.eslint.json')
+const project = existsSync(tsconfigPath) ? tsconfigPath : join(process.cwd(), 'tsconfig.json')
 
-// eslint-disable-next-line no-undef
 console.log('[Eslint]', project)
 
 module.exports = tsEslint.config(
@@ -41,8 +40,6 @@ module.exports = tsEslint.config(
 			parserOptions: {
 				project,
 				sourceType: 'unambiguous',
-				// eslint-disable-next-line no-undef
-				tsconfigRootDir: __dirname,
 			},
 		},
 		plugins: {
