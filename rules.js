@@ -209,11 +209,19 @@ const commonjsPreventRules = {
 	'import/no-default-export': off,
 }
 
+/*
+ * Rules to disable due to clashes
+ */
+const rulesToDisable = {
+	'perfectionist/sort-imports': 'off',
+}
+
 const rules = {
 	...commonjsPreventRules,
 	...prettier,
 	...stylisticTs,
 	...tsEslint,
+	...rulesToDisable,
 }
 
 module.exports = {
