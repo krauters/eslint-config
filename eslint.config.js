@@ -45,7 +45,10 @@ module.exports = tsEslint.config(
 			prettier,
 			'project-structure': projectStructure,
 		},
-		rules,
+		rules: {
+			...rules,
+			'@typescript-eslint/no-misused-spread': 'off',
+		},
 		settings: {
 			'import/resolver': {
 				typescript: {},
@@ -72,6 +75,7 @@ module.exports = tsEslint.config(
 				{ format: ['PascalCase'], selector: 'typeLike' },
 				{ format: ['PascalCase'], selector: 'enumMember' },
 			],
+			'@typescript-eslint/no-misused-spread': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
 		},
 	},
