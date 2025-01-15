@@ -1,13 +1,13 @@
 {
     "extends": "./tsconfig.json",
     "include": [
-        "*.ts",                            // Include all TypeScript files
-        "*.js",                            // Include all TypeScript files
-        "**/*.ts",                         // Include all TypeScript files
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.js",
     ],
     "exclude": [
-        "node_modules",                    // Exclude node_modules folder
-        ".vscode",                         // Exclude .vscode folder
-        "dist"                             // Exclude the dist folder (so you don't recompile outputs)
+        "node_modules",
+        ".vscode",
+        "dist"
     ]
 }
