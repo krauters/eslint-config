@@ -17,7 +17,7 @@ const { camelCase, pascalCase } = {
 
 const maxClasses = 1
 const maxLinesPerFile = 400
-const maxLinesPerFunction = 120
+const maxLinesPerFunction = 200
 const maxConsecutiveEmptyLines = 1
 const printWidth = 120
 const tabWidth = 4
