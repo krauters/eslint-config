@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 const eslint = require('@eslint/js')
-const pluginStylisticTs = require('@stylistic/eslint-plugin-ts')
+const pluginStylistic = require('@stylistic/eslint-plugin')
 const parserTs = require('@typescript-eslint/parser')
 const pluginImport = require('eslint-plugin-import')
 const jsdoc = require('eslint-plugin-jsdoc')
@@ -9,7 +9,6 @@ const perfectionist = require('eslint-plugin-perfectionist')
 const prettier = require('eslint-plugin-prettier')
 const projectStructure = require('eslint-plugin-project-structure')
 const tsEslint = require('typescript-eslint')
-const eslintReact = require('@eslint-react/eslint-plugin')
 
 const { rules } = require('./rules.js')
 const { getTsConfigFile } = require('./utils.js')
@@ -17,6 +16,7 @@ const { getTsConfigFile } = require('./utils.js')
 const project = getTsConfigFile()
 
 module.exports = tsEslint.config(
+	{ ignores: ['dist/**'] },
 	eslint.configs.recommended,
 	...tsEslint.configs.recommendedTypeChecked,
 	...tsEslint.configs.stylisticTypeChecked,
@@ -39,7 +39,7 @@ module.exports = tsEslint.config(
 			},
 		},
 		plugins: {
-			'@stylistic/ts': pluginStylisticTs,
+			'@stylistic': pluginStylistic,
 			import: pluginImport,
 			jsdoc,
 			prettier,
@@ -56,7 +56,7 @@ module.exports = tsEslint.config(
 		},
 	},
 	{
-		...eslintReact.configs.recommended,
+		// React rules temporarily disabled due to plugin compatibility
 		files: ['**/*.tsx'],
 		languageOptions: {
 			parser: parserTs,

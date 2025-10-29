@@ -58,9 +58,9 @@ const jsDoc = {
  * https://prettier.io/docs/en/options.html
  */
 const prettier = {
-	'@stylistic/ts/indent': off,
-	'@stylistic/ts/quotes': off,
-	'@stylistic/ts/space-before-function-paren': off,
+	'@stylistic/indent': off,
+	'@stylistic/quotes': off,
+	'@stylistic/space-before-function-paren': off,
 	'max-len': off,
 	'prettier/prettier': [
 		error,
@@ -81,30 +81,31 @@ const prettier = {
 }
 
 /*
- * Autofixable "@stylistic/ts/" rules
- * For more details, check: https://eslint.style/packages/ts
+ * Unified "@stylistic/" rules (replaces deprecated @stylistic/ts)
+ * Modern stylistic rules with better React/Next.js support
+ * For more details, check: https://eslint.style/packages/default
  */
 const stylisticTs = {
-	'@stylistic/ts/block-spacing': [error, always],
-	'@stylistic/ts/brace-style': [error, '1tbs'],
-	'@stylistic/ts/comma-dangle': [error, 'always-multiline'],
-	'@stylistic/ts/comma-spacing': [error, { before: false }],
-	'@stylistic/ts/func-call-spacing': [error, never],
-	'@stylistic/ts/key-spacing': [
+	'@stylistic/block-spacing': [error, always],
+	'@stylistic/brace-style': [error, '1tbs'],
+	'@stylistic/comma-dangle': [error, 'always-multiline'],
+	'@stylistic/comma-spacing': [error, { before: false }],
+	'@stylistic/function-call-spacing': [error, never],
+	'@stylistic/key-spacing': [
 		error,
 		{
 			afterColon: true,
 			beforeColon: false,
 		},
 	],
-	'@stylistic/ts/keyword-spacing': [
+	'@stylistic/keyword-spacing': [
 		error,
 		{
 			after: true,
 			before: true,
 		},
 	],
-	'@stylistic/ts/lines-around-comment': [
+	'@stylistic/lines-around-comment': [
 		error,
 		{
 			allowArrayStart: true,
@@ -116,7 +117,7 @@ const stylisticTs = {
 			beforeLineComment: true,
 		},
 	],
-	'@stylistic/ts/lines-between-class-members': [
+	'@stylistic/lines-between-class-members': [
 		error,
 		{
 			enforce: [
@@ -127,19 +128,19 @@ const stylisticTs = {
 		},
 		{ exceptAfterSingleLine: true },
 	],
-	'@stylistic/ts/member-delimiter-style': [
+	'@stylistic/member-delimiter-style': [
 		error,
 		{
 			multiline: { delimiter: none },
 		},
 	],
-	'@stylistic/ts/no-extra-parens': [error, 'functions'],
-	'@stylistic/ts/padding-line-between-statements': error,
-	'@stylistic/ts/quote-props': [error, 'as-needed'],
-	'@stylistic/ts/semi': [error, never],
-	'@stylistic/ts/space-before-blocks': [error, always],
-	'@stylistic/ts/space-infix-ops': error,
-	'@stylistic/ts/type-annotation-spacing': error,
+	'@stylistic/no-extra-parens': [error, 'functions'],
+	'@stylistic/padding-line-between-statements': error,
+	'@stylistic/quote-props': [error, 'as-needed'],
+	'@stylistic/semi': [error, never],
+	'@stylistic/space-before-blocks': [error, always],
+	'@stylistic/space-infix-ops': error,
+	'@stylistic/type-annotation-spacing': error,
 }
 
 /*
@@ -162,13 +163,18 @@ const tsEslint = {
 		{ format: [pascalCase], selector: 'typeLike' },
 		{ format: [pascalCase], selector: 'enumMember' },
 	],
+	'@typescript-eslint/no-explicit-any': 'warn',
 	'@typescript-eslint/no-extraneous-class': off,
 	'@typescript-eslint/no-restricted-imports': error,
 	'@typescript-eslint/no-restricted-types': error,
 	'@typescript-eslint/no-unnecessary-condition': off,
+
+	// Better React/Next.js support
+	'@typescript-eslint/no-unsafe-argument': 'warn',
 	'@typescript-eslint/no-unsafe-assignment': off,
 	'@typescript-eslint/no-unsafe-call': off,
 	'@typescript-eslint/no-unsafe-member-access': off,
+	'@typescript-eslint/no-unsafe-return': 'warn',
 	'@typescript-eslint/restrict-template-expressions': off,
 	'@typescript-eslint/unbound-method': off,
 	'dot-notation': off,
@@ -188,6 +194,7 @@ const tsEslint = {
 	'import/prefer-default-export': off,
 	'max-classes-per-file': [error, { ignoreExpressions: true, max: maxClasses }],
 	'max-lines': [error, { max: maxLinesPerFile, skipBlankLines: true, skipComments: true }],
+
 	'max-lines-per-function': [error, maxLinesPerFunction],
 	'newline-before-return': error,
 	'no-inline-comments': error,
